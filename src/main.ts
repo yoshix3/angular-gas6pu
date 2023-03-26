@@ -34,6 +34,7 @@ import { Color, Label } from 'ng2-charts'; // ng2-chartsのプロパティのデ
         [datasets]="barChartData"
         [labels]="barChartLabels"
         [options]="barChartOptions"
+        [colors]="barChartColors"
         [plugins]="barChartPlugins"
         [legend]="barChartLegend"
         [chartType]="barChartType">
@@ -48,8 +49,14 @@ export class App {
   // data
   lineChartData: ChartDataSets[] = [
     {
-      data: [100, 60, 90, 0, 80, 50],
+      data: [100, 60, 90, 20, 80, 50],
       label: '平均湿度',
+      tension: 0,
+    },
+    {
+      data: [50, 50, 50, 50, 50, 50],
+      label: '平均湿度',
+      tension: 0,
     },
   ];
 
@@ -65,12 +72,19 @@ export class App {
 
   lineChartOptions = {
     responsive: true,
+    scales: {
+      yAxes: [
+        {
+          ticks: { min: 0 },
+        },
+      ],
+    },
   };
 
   // 色
   lineChartColors: Color[] = [
     {
-      borderColor: 'black',
+      // borderColor: 'black',
       backgroundColor: 'rgba(255,0,255,0.28)',
     },
   ];
@@ -96,6 +110,13 @@ export class App {
 
   barChartData: ChartDataSets[] = [
     { data: [100, 200, 70, 600, 450, 300], label: '月別降水量' },
+  ];
+  // 色
+  barChartColors: Color[] = [
+    {
+      // borderColor: 'black',
+      backgroundColor: 'rgba(0,0,255,0.28)',
+    },
   ];
 }
 
