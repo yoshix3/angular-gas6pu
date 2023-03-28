@@ -50,42 +50,60 @@ export class App {
   lineChartData: ChartDataSets[] = [
     {
       data: [100, 60, 90, 20, 80, 50],
-      label: '平均湿度',
-      tension: 0,
+      label: '精度',
+      lineTension: 0,
     },
     {
       data: [50, 50, 50, 50, 50, 50],
-      label: '平均湿度',
-      tension: 0,
+      label: '閾値',
+      lineTension: 0,
     },
   ];
 
   // ラベル
-  lineChartLabels: Label[] = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-  ];
+  lineChartLabels: Label[] = ['1', '2', '3', '4', '5', '6'];
 
-  lineChartOptions = {
+  lineChartOptions: ChartOptions = {
     responsive: true,
+    maintainAspectRatio: false,
     scales: {
-      yAxes: [
+      xAxes: [
         {
-          ticks: { min: 0 },
+          ticks: {
+            min: 1,
+            max: 100,
+            precision: 0,
+          },
         },
       ],
+      yAxes: [
+        {
+          ticks: {
+            min: 0,
+            precision: 0,
+            callback: function (value) {
+              return value + '%';
+            },
+          },
+        },
+      ],
+    },
+    plugins: {
+      datalabels: {
+        display: false,
+      },
     },
   };
 
   // 色
   lineChartColors: Color[] = [
     {
-      // borderColor: 'black',
-      backgroundColor: 'rgba(255,0,255,0.28)',
+      borderColor: 'blue',
+      backgroundColor: 'rgba(0,0,255,0.28)',
+    },
+    {
+      borderColor: 'green',
+      backgroundColor: 'rgba(0,0,255,0)',
     },
   ];
 
@@ -95,6 +113,22 @@ export class App {
 
   barChartOptions: ChartOptions = {
     responsive: true,
+    scales: {
+      xAxes: [
+        {
+          ticks: {
+            min: 0,
+            precision: 0,
+          },
+        },
+      ],
+    },
+    plugins: {
+      datalabels: {
+        anchor: 'end',
+        align: 'end',
+      },
+    },
   };
   barChartLabels: Label[] = [
     'January',
@@ -114,7 +148,6 @@ export class App {
   // 色
   barChartColors: Color[] = [
     {
-      // borderColor: 'black',
       backgroundColor: 'rgba(0,0,255,0.28)',
     },
   ];
