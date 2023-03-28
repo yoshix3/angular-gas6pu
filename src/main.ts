@@ -3,14 +3,14 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { bootstrapApplication } from '@angular/platform-browser';
 
-import { NgChartsModule } from 'ng2-charts';
+import { ChartsModule } from 'ng2-charts';
 import { ChartDataset, ChartOptions, ChartType } from 'chart.js'; // データ型をimport
 // import { Color, Label } from 'ng2-charts'; // ng2-chartsのプロパティのデータ型をimport
 
 @Component({
   selector: 'my-app',
   standalone: true,
-  imports: [CommonModule, NgChartsModule],
+  imports: [CommonModule, ChartsModule],
   template: `
     <h1>Hello from {{name}}!</h1>
     <a target="_blank" href="https://angular.io/start">
@@ -23,7 +23,7 @@ import { ChartDataset, ChartOptions, ChartType } from 'chart.js'; // データ�
         [labels]="lineChartLabels"
         [options]="lineChartOptions"
         [legend]="lineChartLegend"
-        [type]="lineChartType"
+        [chartType]="lineChartType"
         [plugins]="lineChartPlugins">
       </canvas>
     </div>
@@ -35,7 +35,7 @@ import { ChartDataset, ChartOptions, ChartType } from 'chart.js'; // データ�
         [options]="barChartOptions"
         [plugins]="barChartPlugins"
         [legend]="barChartLegend"
-        [type]="barChartType">
+        [chartType]="barChartType">
       </canvas>
     </div>
 
